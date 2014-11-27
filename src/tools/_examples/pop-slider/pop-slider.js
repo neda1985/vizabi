@@ -64,16 +64,12 @@ define([
          * @param model the tool model will be received
          */
         getQuery: function(model) {
-            var state = model.state,
-                time_start = d3.time.format("%Y")(state.time.start),
-                time_end = d3.time.format("%Y")(state.time.end);
             return [{
                 "from": "data",
-                "select": ["geo", "geo.name", "time", "geo.region", "geo.category", state.show.indicator],
+                "select": ["geo", "geo.name"],
                 "where": {
-                    "geo": state.show.geo,
-                    "geo.category": state.show.geo_category,
-                    "time": [time_start + "-" + time_end]
+                    "geo": ["*"],
+                    "geo.region": ["afr"],
                 }
             }];
         }
